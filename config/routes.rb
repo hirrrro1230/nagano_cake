@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: "public/sessions"
+  }
+  devise_for :admins, skip: [:registrations, :passwords] , controllers: {
+    registrations: "admin/sessions"
+  }
   
   root "public/homes#top"
   
@@ -11,8 +18,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :homes, only: [:top]
   end
-  
-  resources :registrations, only: [:new, :create]
   
   resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
   namespace :admin do
@@ -36,15 +41,6 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
   end
 
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: "public/sessions"
-  }
-  get "customers/sign_up" => "registrations#new"
-  post "cutomers" => "registrations#create"
-  
-  devise_for :admins, skip: [:registrations, :passwords] , controllers: {
-    registrations: "admin/sessions"
-  }
+
   
 end
