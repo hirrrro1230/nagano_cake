@@ -21,27 +21,21 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     <ul class="navbar-nav ml-auto">
-    <% if customer_signed_in? %>
+    <% if admin_signed_in? %>
       <li>
-       <%= link_to user_path(current_user.id), class:'navbar-brand' do %>
-       <i class="fas fa-home"></i>Home
-       <% end %>
+      <%= link_to "商品一覧", admin_items_path %>    
+      </li>
+       <li>
+       <%= link_to "会員一覧", admin_customers_path %>
       </li>
       <li>
-      <%= link_to users_path, class:'navbar-brand' do %>    
-       <i class="fas fa-users"></i>Users
-      <% end %>
+       <%= link_to "注文履歴一覧", admin_path %>   
       </li>
       <li>
-        
-       <%= link_to books_path, class:'navbar-brand' do %>   
-       <i class="fas fa-book-open"></i>Books
-       <% end %>
+       <%= link_to "ジャンル一覧", admin_genres_path %>   
       </li>
       <li>
-        <%= link_to destroy_user_session_path, method: :delete, class:'navbar-brand' do %>
-          <i class="fas fa-sign-out-alt"></i>Log out
-        <% end %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
