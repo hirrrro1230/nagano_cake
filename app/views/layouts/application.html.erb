@@ -35,27 +35,27 @@
        <%= link_to "ジャンル一覧", admin_genres_path %>   
       </li>
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
     <% else %>
       <li>
-      <%= link_to root_path, class:'navbar-brand' do %>
-       <i class="fas fa-home"></i>Home
+      <%= link_to about_path, class:'navbar-brand' do %>
+       About
        <% end %>
       </li>
       <li>
-      <%= link_to home_about_path, class:'navbar-brand' do %>
-        <i class="fas fa-link"></i>About
+      <%= link_to items_path, class:'navbar-brand' do %>
+        商品一覧
        <% end %>
       </li>
       <li>
-        <%= link_to new_user_registration_path, class:'navbar-brand' do %>
-          <i class="fas fa-user-plus"></i>Sign up
+        <%= link_to new_customer_registration_path, class:'navbar-brand' do %>
+          新規登録
         <% end %>
       </li>
       <li>
-        <%= link_to new_user_session_path, class:'navbar-brand' do %>
-          <i class="fas fa-sign-in-alt"></i>Log in
+        <%= link_to new_customer_session_path, class:'navbar-brand' do %>
+         ログイン
         <% end %>
       </li>
     <% end %>

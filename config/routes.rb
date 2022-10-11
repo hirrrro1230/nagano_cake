@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :homes, only: [:top]
   end
   
+  get 'about' => 'public/homes#about'
+  
   resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
