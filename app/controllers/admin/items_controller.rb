@@ -12,4 +12,10 @@ class Admin::ItemsController < ApplicationController
     def index
         @items = Item.all
     end
+    
+    private
+  # ストロングパラメータ
+    def list_params
+        params.require(:item).permit(:name, :introduction)
+    end
 end

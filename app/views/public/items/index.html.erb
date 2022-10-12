@@ -1,0 +1,12 @@
+<h3>商品一覧</h3>
+<table class="table table-hover table-inverse">
+    <tbody>
+        <% @items.each do |item| %>
+            <tr>
+                <td><%= item.image %></td>
+                <td><%= item.name %></td>
+                <td><%= item.price %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

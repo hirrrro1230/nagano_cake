@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   
   root "public/homes#top"
   
-  resources :items, only: [:index, :show] 
+  namespace :public do
+    resources :items, only: [:index, :show] 
+  end
   namespace :admin do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
-  
-  get 'items' => 'items#index'
   
   resources :homes, only: [:top, :about]
   namespace :admin do
@@ -23,12 +23,16 @@ Rails.application.routes.draw do
   
   get 'about' => 'public/homes#about'
   
-  resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+  namespace :public do
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+  end
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
   end
   
-  resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+  namespace :public do
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+  end
   
   resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
   namespace :admin do
