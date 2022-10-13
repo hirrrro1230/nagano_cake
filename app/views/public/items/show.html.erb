@@ -1,0 +1,7 @@
+<%= image_tag item.get_image(100,100) %>
+<%= item.name %>
+<%= item.introduction %>
+<%= item.price %>
+<%= f.hidden_field :item_id, :value => cart_item.amount %>
+    <%= f.select :amount, *[1..50] %>
+<% end %>
