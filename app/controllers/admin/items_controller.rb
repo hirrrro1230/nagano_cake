@@ -13,6 +13,10 @@ class Admin::ItemsController < ApplicationController
         @items = Item.all
     end
     
+    def show
+        @item = Item.find(prams[:id])
+    end
+    
     private
   # ストロングパラメータ
     def list_params
