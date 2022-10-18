@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
   end
   
+  post "admin/items/new" =>'admin/items#new'
+  patch 'admin/items/:id' => 'admin/items#update', as: "admin/update_item"
+  
   resources :homes, only: [:top, :about]
   namespace :admin do
     resources :homes, only: [:top]

@@ -1,19 +1,21 @@
 <h1>商品新規登録</h1>
-  <%= form_with model: @item do |f| %>
-    <h4>商品画像</h4>
+  <%= form_with model: @item, url: admin_items_path do |f| %>
+    <p>商品画像</p>
       <%= f.file_field :image, accept: "image/*" %>
-    <h4>商品名</h4>
+    <p>商品名</p>
       <%= f.text_field :name %>
-    <h4>商品説明</h4>
+    <p>商品説明</p>
       <%= f.text_area :introduction %>
-    <h4>ジャンル</h4>
-      <%= f.select :genre_id, [["理工学部", "理工学部"], ["経済学部", "経済学部"], ["法学部", "法学部"], ["医学部", "医学部"]], include_blank: "選択して下さい" %>
-    <h4>税抜価格</h4>
-      
-    <h4>販売ステータス</h4>
-      <%= f.lavel :is_active, '販売中', value: 1 %>
+    <p>ジャンル</p>
+      <%= f.select :genre_id, [["ケーキ", "ケーキ"], ["焼き菓子", "焼き菓子"], ["プリン", "プリン"], ["キャンディ", "キャンディ"]], include_blank: "選択して下さい" %>
+    <p>税抜価格</p>
+      <div class="field">
+        <%= f.text_field :price, data: { autonumeric: true } %>円
+      </div>
+    <p>販売ステータス</p>
+      <%= f.label :is_active, '販売中', value: 1 %>
       <%= f.radio_button :is_active, '1' %>
-      <%= f.lavel :is_active, '販売停止中', value: 0 %>
+      <%= f.label :is_active, '販売停止中', value: 0 %>
       <%= f.radio_button :is_active, '0' %>
-    <%= f.submit '新規登録' %>
+    <%= f.submit '新規登録',  class: "btn btn-success" %>
   <% end %>

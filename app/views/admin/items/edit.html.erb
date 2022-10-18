@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="mx-auto">
+        <h1>商品編集</h1>
+        <%= form_with model: @item, url: admin_update_item_path(@item.id), method: :patch do |f| %>
+            <p>商品画像</p>
+              <%= f.file_field :image, accept: "image/*" %>
+            <p>商品名</p>
+              <%= f.text_field :name %>
+            <p>商品説明</p>
+              <%= f.text_area :introduction %>
+            <p>ジャンル</p>
+              <%= f.select :genre_id, [["ケーキ", "ケーキ"], ["焼き菓子", "焼き菓子"], ["プリン", "プリン"], ["キャンディ", "キャンディ"]], include_blank: "選択して下さい" %>
+            <p>税抜価格</p>
+              <div class="field">
+                <%= f.text_field :price, data: { autonumeric: true } %>円
+              </div>
+            <p>販売ステータス</p>
+              <%= f.label :is_active, '販売中', value: 1 %>
+              <%= f.radio_button :is_active, '1' %>
+              <%= f.label :is_active, '販売停止中', value: 0 %>
+              <%= f.radio_button :is_active, '0' %>
+            <p><%= f.submit '変更を保存',  class: "btn btn-success" %></p>
+          <% end %>
+     </div>
+</div>

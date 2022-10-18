@@ -4,9 +4,9 @@ class Admin::ItemsController < ApplicationController
     end
     
     def create
-        @item = Item.new(item_prams)
-        @item = Item.save
-        redirect_to items_path
+        @item = Item.new(item_params)
+        @item.save
+        redirect_to admin_items_path
     end
     
     def index
@@ -14,12 +14,22 @@ class Admin::ItemsController < ApplicationController
     end
     
     def show
-        @item = Item.find(prams[:id])
+        @item = Item.find(params[:id])
+    end
+    
+    def edit
+        @item = Item.find(params[:id])
+    end
+    
+    def update
+        item = Item.find(params[:id])
+        item.update(item_params)
+        redirect_to admin_items_path(item.id)
     end
     
     private
-  # ストロングパラメータ
-    def list_params
-        params.require(:item).permit(:name, :introduction)
+    
+    def item_params
+        params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :is_active)
     end
 end
