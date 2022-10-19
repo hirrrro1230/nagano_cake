@@ -7,6 +7,6 @@ class Admin::CustomersController < ApplicationController
     
     private
     def if_not_admin
-    redirect_to root_path unless current_customer.admin?
-    end  
+    redirect_to root_path unless current_admin
+    end
 end
