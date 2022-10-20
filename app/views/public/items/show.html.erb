@@ -4,4 +4,5 @@
 <%= item.price %>
 <%= f.hidden_field :item_id, :value => cart_item.amount %>
     <%= f.select :amount, *[1..50] %>
+    <%= f.submit 'カートに入れる', class: "btn btn-success" %>
 <% end %>

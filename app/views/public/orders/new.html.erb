@@ -1,4 +1,4 @@
 <h3>注文情報入力</h3>
-<h4>支払方法</h4>
-
-<h4>お届け先</h4>
+<p>支払方法</p>
+    <%= select :status, :name,Order.payment_methods_i18n %>
+<p>お届け先</p>
