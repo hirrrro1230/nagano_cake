@@ -5,6 +5,10 @@ class Admin::CustomersController < ApplicationController
         @customers = Customer.all
     end
     
+    def show
+        @customer = Customer.find(params[:id])
+    end
+    
     private
     def if_not_admin
     redirect_to root_path unless current_admin
