@@ -19,12 +19,15 @@ Rails.application.routes.draw do
   post "admin/items/new" =>'admin/items#new'
   patch 'admin/items/:id' => 'admin/items#update', as: "admin/update_item"
   
-  resources :homes, only: [:top, :about]
+  scope module: :public do
+    resources :homes, only: [:top, :about]
+  end
   namespace :admin do
     resources :homes, only: [:top]
   end
   
   get 'about' => 'public/homes#about'
+  get 'admin' => 'admin/homes#top'
   
   scope module: :public do
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
@@ -47,7 +50,9 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
   end
   
-  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  scope module: :public do
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  end
   
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
