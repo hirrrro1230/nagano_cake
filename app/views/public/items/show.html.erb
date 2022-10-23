@@ -1,8 +1,9 @@
-<%= image_tag item.get_image(100,100) %>
-<%= item.name %>
-<%= item.introduction %>
-<%= item.price %>
-<%= f.hidden_field :item_id, :value => cart_item.amount %>
+<%= image_tag @item.image, size: "200x200" %>
+<%= @item.name %>
+<%= @item.introduction %>
+<%= @item.price %>
+<%= form_with model: @cart_item, url: cart_items_path do |f| %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
     <%= f.select :amount, *[1..50] %>
     <%= f.submit 'カートに入れる', class: "btn btn-success" %>
 <% end %>

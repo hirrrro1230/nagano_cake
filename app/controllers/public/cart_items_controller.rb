@@ -6,7 +6,7 @@ class Public::CartItemsController < ApplicationController
             redirect_to new_order_path
         end
     end
-    
+
     private
       def cart_item_params
           params.require(:cart_item).permit(:item_id, :amount)

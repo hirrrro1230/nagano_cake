@@ -7,9 +7,13 @@
     <% @customers.each do |customer| %>
         <tr>
         <td><%= customer.id %></td>
-        <td><%= customer.name %></td>
+        <td><%= customer.last_name %><%= customer.first_name %></td>
         <td><%= customer.email %></td>
-        <td><%= customer.is_deleted %></td>
+        <td><% if customer.is_deleted == false %>
+        有効
+        <% else %>
+        退会
+        <% end %></td>
         </tr>
     <% end %>
 </table>
