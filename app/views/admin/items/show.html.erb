@@ -9,17 +9,16 @@
           </p>    
         </div>
         <div class="col-md-8">
-            <p>商品名</p>
-            <%= @item.name %>
-            <p>商品説明</p>
-            <%= @item.introduction %>
-            <p>ジャンル</p>
-            <%= @item.genre_id %>
+            <p>商品名
+            <%= @item.name %></p>
+            <p>商品説明
+            <%= @item.introduction %></p>
+            <p>ジャンル
+            <%= @item.genre_id %></p>
             <p>税込価格</br>
-            (税抜価格)</p>
-            <%= @item.with_tax_price%>(<%= @item.price %>)
-            <p>販売ステータス</p>
-            <%= @item.is_active %>
+            (税抜価格)<%= @item.with_tax_price%>(<%= @item.price %>)円</p>
+            <p>販売ステータス
+            <%= @item.is_active %></p>
             <p>
             <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-success" %>
             </p>
