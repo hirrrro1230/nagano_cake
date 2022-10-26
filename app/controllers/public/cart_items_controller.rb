@@ -1,9 +1,14 @@
 class Public::CartItemsController < ApplicationController
     def index
-        @cart_items = CartItem.all
-        @cart_item = CartItem.create
+        @cart_items = current_customer.cart_items
+        @total = 0
+        @cart_item = CartItem.new
         if @cart_item.save
             redirect_to new_order_path
+        end
+        @cart_items.each do |cart_item| 
+            tal = cart_item.item.with_tax_price * cart_item.amount
+        @total += tal
         end
     end
     

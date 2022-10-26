@@ -18,12 +18,16 @@
         <tr>
             <td><%= cart_item.item.name %></td>
             <td><%= cart_item.item.with_tax_price%></td>
-            <td><%= cart_item.amount %></td>
+            <td><%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %><%= f.submit "変更", class:"btn btn-success" %></td>
             <td><%= cart_item.subtotal%></td>
-            <% #@合計金額 +=  cart_item.subtotal %>
             <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger"  %></td>
         </tr>
         <% end %>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>合計金額</td>
+        <td><%= @total %>円</td>
     </tbody>
 </table>
 
