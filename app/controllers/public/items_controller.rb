@@ -8,7 +8,6 @@ class Public::ItemsController < ApplicationController
         @cart_item = CartItem.new
     end    
     
-    
     private
 
       def item_params
