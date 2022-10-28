@@ -7,14 +7,17 @@
     <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
     <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
 <p>お届け先</p>
-    <p><%= f.radio_button :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>ご自身の住所</p>
+    <p><%= f.radio_button :address_id, options_from_collection_for_select(Address.all, :id, :address_display)%>
+    <%= f.label :address_id, 'ご自身の住所', value: 0 %></p>
     <p><%= current_customer.postal_code %>　<%= current_customer.address %> </p>
-    <p><%= f.radio_button :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>登録済み住所から選択</p>
+    <p><%= f.radio_button :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+    <%= f.label :address_id, '登録済み住所から選択', value: 1 %></p>
     <p><%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %></p>
-    <P><%= f.radio_button :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>新しいお届け先</P>
-    <p>郵便番号（ハイフン無し）<%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %></p>
+    <P><%= f.radio_button :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+    <%= f.label :address_id, '新しいお届け先', value: 2 %></P>
+    <p>郵便番号（ハイフン無し）<%= f.text_field :postal_code %></p>
     <P>住所　<%= f.text_field :address %></P>
-    <P>宛名　<%= f.text_field :name, autofocus: true, autocomplete: "name" %></P>
+    <P>宛名　<%= f.text_field :name %></P>
     
 <p>
     <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>

@@ -1,6 +1,6 @@
 class AddColumnsToCartOrders < ActiveRecord::Migration[6.1]
   def change
-    add_column :orders, :customer_id, :integer, null: false
+    add_column :orders, :customer_id, :integer, null: false, foreign_key: true
     add_column :orders, :postal_code, :string, null: false
     add_column :orders, :address, :string, null: false
     add_column :orders, :name, :string, null: false
