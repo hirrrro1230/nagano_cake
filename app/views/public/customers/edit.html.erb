@@ -1,0 +1,37 @@
+<div class="container">
+     <div class="row">
+        <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto rounded px-0 my-5">
+            <h3>会員情報編集</h3>
+            <table class="table table table-borderless">
+            <%= form_with model: @customer, url: customer_path(current_customer.id) do |f| %>
+                <tbody>
+                    <tr>
+                        <th scope="row"><label for="inputLastName">氏</label><label for="inputFirstName">名</label></th>
+                        <td><%= f.text_field :last_name, autofocus: true, id:"inputLastName", placeholder:"氏"%><%= f.text_field :first_name, autofocus: true, id:"inputFirstName", placeholder:"名"%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="inputLastNameKana">カ</label><label for="inputFirstNameKana">ナ</label></th>
+                        <td><%= f.text_field :last_name_kana, autofocus: true, id:"inputLastNameKana", placeholder:"カ"%><%= f.text_field :first_name_kana, autofocus: true, id:"inputFirstNameKana", placeholder:"ナ"%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="inputPostalCode">郵便番号</label></th>
+                        <td><%= f.text_field :postal_code, autofocus: true, id:"inputPostalCode", placeholder:"郵便番号"%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">住所</th>
+                        <td><%= @customer.address %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">電話番号</th>
+                        <td><%= @customer.telephone_number %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">メールアドレス</th>
+                        <td><%= @customer.email %></td>
+                    </tr>
+                </tbody>
+            <% end %>
+            </table>
+        </div>
+    </div>
+</div>

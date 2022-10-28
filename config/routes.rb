@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     get 'show' => 'customers#show', as:'my_page'
+    get 'unsubscribe' => 'customers#unsubscribe'
+    patch 'withdraw' => 'customers#withdraw'
   end
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
