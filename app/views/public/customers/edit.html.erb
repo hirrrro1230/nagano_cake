@@ -3,7 +3,7 @@
         <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto rounded px-0 my-5">
             <h3>会員情報編集</h3>
             <table class="table table table-borderless">
-            <%= form_with model: @customer, url: customer_path(current_customer.id) do |f| %>
+            <%= form_with model: @customer, url: customer_path(current_customer.id), method: :patch do |f| %>
                 <tbody>
                     <tr>
                         <th scope="row"><label for="inputLastName">氏</label><label for="inputFirstName">名</label></th>
@@ -32,6 +32,9 @@
                 </tbody>
             </table>
             <%= f.submit "編集内容を保存", class:"btn btn-success" %>
+            <% end %>
+            <%= link_to customer_unsubscribe_path(current_customer.id), class:"btn btn-danger" do %>
+                退会する
             <% end %>
         </div>
     </div>
