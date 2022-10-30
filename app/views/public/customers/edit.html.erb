@@ -33,7 +33,7 @@
             </table>
             <%= f.submit "編集内容を保存", class:"btn btn-success" %>
             <% end %>
-            <%= link_to customer_unsubscribe_path(current_customer.id), class:"btn btn-danger" do %>
+            <%= link_to customers_unsubscribe_path, class:"btn btn-danger" do %>
                 退会する
             <% end %>
         </div>

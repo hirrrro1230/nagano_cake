@@ -29,11 +29,12 @@ Rails.application.routes.draw do
   get 'about' => 'public/homes#about'
   get 'admin' => 'admin/homes#top'
   
+  
   scope module: :public do
+  get 'customers/unsubscribe' => 'customers#unsubscribe'
+  patch 'customers/withdraw' => 'customers#withdraw'
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     get 'show' => 'customers#show', as:'my_page'
-    get 'customer/unsubscribe' => 'customers#unsubscribe'
-    patch 'customer/withdraw' => 'customers#withdraw'
   end
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
