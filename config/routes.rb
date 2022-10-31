@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   
   scope module: :public do
   get 'customers/unsubscribe' => 'customers#unsubscribe'
+  get 'customers/complete' => 'customers#complete'
+  post 'customers/complete' => 'customers#complete'
   patch 'customers/withdraw' => 'customers#withdraw'
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     get 'show' => 'customers#show', as:'my_page'

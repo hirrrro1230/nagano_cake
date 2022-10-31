@@ -35,7 +35,7 @@ class Public::OrdersController < ApplicationController
           @order.postal_code = Address.find(params[:order][:address_id]).postal_code
         elsif params[:order][:address_number] == "2"
           address_new = current_customer.addresses.new(address_params)
-          if address_new.save 
+          if address_new
           else
             render :new
           end
