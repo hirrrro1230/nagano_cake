@@ -28,13 +28,11 @@ class Public::OrdersController < ApplicationController
         if params[:order][:address_number] == "0"
           @order.name = current_customer.name 
           @order.address = current_customer.address
+          @order.postal_code = current_customer.postal_code
         elsif params[:order][:address_number] == "1"
-          if Address.exists?(name: params[:order][:registered])
-            @order.name = Address.find(params[:order][:registered]).name
-            @order.address = Address.find(params[:order][:registered]).address
-          else
-            render :new
-          end
+          @order.name = Address.find(params[:order][:address_id]).name
+          @order.address = Address.find(params[:order][:address_id]).address
+          @order.postal_code = Address.find(params[:order][:address_id]).postal_code
         elsif params[:order][:address_number] == "2"
           address_new = current_customer.addresses.new(address_params)
           if address_new.save 
@@ -50,10 +48,10 @@ class Public::OrdersController < ApplicationController
     
     private
     def order_params
-      params.require(:order).permit(:payment_method, :postal_code, :address, :name, :address_id)
+      params.require(:order).permit(:payment_method, :postal_code, :address, :name)
     end
     
     def address_params
-      params.require(:order).permit(:name, :address)
+      params.require(:order).permit(:name, :address, :postal_code)
     end
 end
