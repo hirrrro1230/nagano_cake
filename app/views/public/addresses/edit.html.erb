@@ -1,0 +1,14 @@
+<h3>配送先編集</h3>
+<div class="container">
+     <div class="row no-gutters">
+        <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto px-0 my-5">
+            <%= form_with model: @address, url: address_path(@address.id), method: :patch do |f| %>
+                <P><label for="inputPostalCode">郵便番号（ハイフン無し）</label><%= f.text_field :postal_code, autofocus: true, id:"inputPostalCode", placeholder:"郵便番号（ハイフン無し）"%></P>
+                <p><label for="inputAddress">住所　　　　　　　　　　</label><%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"住所"%></P>
+                <p><label for="inputName">宛名　　　　　　　　　　</label><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"宛名"%>
+                <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                <%= f.submit '変更内容を保存', class:"btn btn-success" %></P>
+            <% end %>
+        </div>
+    </div>
+</div>

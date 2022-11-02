@@ -1,4 +1,8 @@
 class Public::OrdersController < ApplicationController
+    def index
+      @orders = Order.all
+    end
+    
     def new
       @order = Order.new
     end
@@ -26,7 +30,7 @@ class Public::OrdersController < ApplicationController
     def confirm
       @order = Order.new(order_params)
         if params[:order][:address_number] == "0"
-          @order.name = current_customer.name 
+          @order.name = current_customer.last_name+current_customer.first_name
           @order.address = current_customer.address
           @order.postal_code = current_customer.postal_code
         elsif params[:order][:address_number] == "1"
@@ -44,6 +48,9 @@ class Public::OrdersController < ApplicationController
         end
         @cart_items = current_customer.cart_items.all
         @total = 0
+    end
+    
+    def complete
     end
     
     private

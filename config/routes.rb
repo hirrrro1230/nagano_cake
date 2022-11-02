@@ -32,8 +32,6 @@ Rails.application.routes.draw do
   
   scope module: :public do
   get 'customers/unsubscribe' => 'customers#unsubscribe'
-  get 'customers/complete' => 'customers#complete'
-  post 'customers/complete' => 'customers#complete'
   patch 'customers/withdraw' => 'customers#withdraw'
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     get 'show' => 'customers#show', as:'my_page'
@@ -52,12 +50,15 @@ Rails.application.routes.draw do
   post 'orders/new' => 'orders#new'
   get 'orders/confirm' => 'orders#confirm'
   post 'orders/confirm' => 'orders#confirm'
+  get 'orders/complete' => 'orders#complete'
+  post 'orders/complete' => 'orders#complete'
   end
   namespace :admin do
     resources :orders, only: [:show, :update]
   end
   
   scope module: :public do
+    delete 'addresses' => 'addresses#destroy'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
   
