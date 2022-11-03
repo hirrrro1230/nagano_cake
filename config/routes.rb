@@ -46,12 +46,12 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
+  get 'orders/complete' => 'orders#complete'
+  post 'orders/complete' => 'orders#complete'
     resources :orders, only: [:new, :confirm, :complete, :create, :index, :show]
   post 'orders/new' => 'orders#new'
   get 'orders/confirm' => 'orders#confirm'
   post 'orders/confirm' => 'orders#confirm'
-  get 'orders/complete' => 'orders#complete'
-  post 'orders/complete' => 'orders#complete'
   end
   namespace :admin do
     resources :orders, only: [:show, :update]

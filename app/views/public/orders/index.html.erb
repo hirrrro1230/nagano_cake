@@ -1,6 +1,7 @@
 <div class="container">
      <div class="row">
         <div class="col-md-10 col-sm-10 mx-2 mx-sm-auto rounded px-0 my-5">
+            <h3>注文履歴一覧</h3>
             <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
@@ -15,12 +16,15 @@
                 <tbody>
                 <% @orders.each do |order| %>
                     <tr>
-                        <td><%= current_customer.order.created_at %></td>
-                        <td><%= current_customer.order.address %></td>
-                        <td><%= current_customer.order.item %></td>
-                        <td><%= current_customer.order.total_payment %>円</td>
-                        <td><%= current_customer.order.status %></td>
-                        <td><%= link_to order_path(order.id), class:"btn btn-danger" do %>
+                        <td><%= order.created_at %></td>
+                        <td><%= order.address %></td>
+                        <td><% order.order_details.each do |order_detail| %>
+                                <%= order_detail.item.name %>
+                            <% end %>
+                        </td>
+                        <td><%= order.total_payment %>円</td>
+                        <td><%= order.status %></td>
+                        <td><%= link_to order_path(order.id), class:"btn btn-primary" do %>
                         表示する
                         <% end %>
                         </td>
