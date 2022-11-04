@@ -4,6 +4,12 @@ class Public::OrdersController < ApplicationController
       @orders = @customer.orders
     end
     
+    def show
+      @order = Order.find(params[:id])
+      @order.shipping_cost = 800
+      @total = @order.total_payment + @order.shipping_cost
+    end
+    
     def new
       @order = Order.new
     end
