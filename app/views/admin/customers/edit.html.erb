@@ -1,0 +1,45 @@
+<div class="container">
+     <div class="row">
+        <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto rounded px-0 my-5">
+            <h3>会員情報編集</h3>
+            <%= form_with model: @customer, url: customer_path(@customer.id), method: :patch do |f| %>
+            <table class="table table table-borderless">
+                <tbody>
+                    <tr>
+                        <th scope="row">会員ID</th>
+                        <td><%= @customer.id %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="inputLastName">氏</label><label for="inputFirstName">名</label></th>
+                        <td><%= f.text_field :last_name, autofocus: true, id:"inputLastName", placeholder:"氏"%><%= f.text_field :first_name, autofocus: true, id:"inputFirstName", placeholder:"名"%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="inputLastNameKana">カ</label><label for="inputFirstNameKana">ナ</label></th>
+                        <td><%= f.text_field :last_name_kana, autofocus: true, id:"inputLastNameKana", placeholder:"カ"%><%= f.text_field :first_name_kana, autofocus: true, id:"inputFirstNameKana", placeholder:"ナ"%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="inputPostalCode">郵便番号</label></th>
+                        <td><%= f.text_field :postal_code, autofocus: true, id:"inputPostalCode", placeholder:"郵便番号"%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="inputAddress">住所</label></th>
+                        <td><%= f.text_field :address, autofocus: true, id:"inputAddress", placeholder:"住所"%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="inputTelephoneNumber">電話番号</label></th>
+                        <td><%= f.text_field :telephone_number, autofocus: true, id:"inputTelephoneNumber", placeholder:"電話番号"%></td>
+                    </tr>
+                    <tr>
+                        <th scope="row"><label for="inputEmail">メールアドレス</th>
+                        <td><%= f.text_field :email, autofocus: true, id:"inputEmail", placeholder:"メールアドレス"%></td>
+                    </tr>
+                </tbody>
+            </table>
+                <%= f.submit "編集内容を保存", class:"btn btn-success" %>
+            <% end %>
+                <%= link_to customers_unsubscribe_path, class:"btn btn-danger" do %>
+                    退会する
+                <% end %>
+        </div>
+    </div>
+</div>

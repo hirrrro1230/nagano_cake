@@ -35,5 +35,9 @@
         </tr>
     </tbody>
 </table>
-<%= link_to "編集する", edit_admin_cusotmer_path(@customer.id), class="btn btn-success" %>
-<%= link_to "注文履歴一覧を見る", class="btn btn-primary" %>
+<%= link_to edit_admin_customer_path(@customer.id), class:"btn btn-success" do %>
+編集する
+<% end %>
+<%= link_to admin_path, class:"btn btn-primary" do %>
+注文履歴一覧を見る
+<% end %>
