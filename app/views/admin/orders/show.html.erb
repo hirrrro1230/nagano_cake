@@ -1,7 +1,33 @@
 <div class="container">
      <div class="row">
-        <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto rounded px-0 my-5">
-            <h3><%= @order.customer.last_name %><%= @order.customer.first_name %>さんの会員情報編集</h3>
+        <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto px-0 my-5">
+            <h3>注文履歴詳細</h3>
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                    <th scope="row">購入者</th>
+                    <td><%= @order.customer.last_name %><%= @order.customer.first_name %></td>
+                </tr>
+                <tr>
+                    <th scope="row">注文日</th>
+                    <td><%= @order.created_at %></td>
+                </tr>
+                 <tr>
+                    <th scope="row">配送先</th>
+                    <td><%= @order.address %></td>
+                </tr>
+                 <tr>
+                    <th scope="row">支払方法</th>
+                    <td><%= @order.payment_method %></td>
+                </tr>
+                <%= form_with model: @order, url: admin_order_path(@order.id) do |f| %>
+                <tr>
+                    <th scope="row"><%= f.label :status, '注文ステータス' %></th>
+                    <td><%= f.select :status, Order.statuses_i18n.keys.map { |k| [I18n.t("enums.order.status.#{k}"), k]} %></td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
         </div>
     </div>
 </div>
