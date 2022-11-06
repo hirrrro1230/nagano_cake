@@ -25,7 +25,18 @@
                       <% end %>
                       <%= sum %>
                   </td>
-                  <td><%= order.status %></td>
+                  <td><% if order.status == "waiting" %>
+                      入金待ち
+                      <% elsif order.status == "confirmation" %>
+                      入金確認
+                      <% elsif order.status == "making" %>
+                      製作中
+                      <% elsif order.status == "prepare_for" %>
+                      発送準備中
+                      <% else %>
+                      発送済み
+                      <% end %>
+                  </td>
                   
                 </tr>
                 <% end %>

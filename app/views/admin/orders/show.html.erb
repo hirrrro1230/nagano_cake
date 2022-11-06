@@ -2,6 +2,7 @@
      <div class="row">
         <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto px-0 my-5">
             <h3>注文履歴詳細</h3>
+            <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch do |f| %>
             <table class="table table-borderless">
               <tbody>
                 <tr>
@@ -20,14 +21,19 @@
                     <th scope="row">支払方法</th>
                     <td><%= @order.payment_method %></td>
                 </tr>
-                <%= form_with model: @order, url: admin_order_path(@order.id) do |f| %>
+                
                 <tr>
+                    
                     <th scope="row"><%= f.label :status, '注文ステータス' %></th>
-                    <td><%= f.select :status, Order.statuses_i18n.keys.map { |k| [I18n.t("enums.order.status.#{k}"), k]} %></td>
+                    <td><%= f.select :status, Order.statuses_i18n.keys.map { |k| [I18n.t("enums.order.status.#{k}"), k]} %>
+                        <%= f.submit "更新", class:"btn btn-success" %>
+                    </td>
+                    
                 </tr>
-                <% end %>
+                
               </tbody>
             </table>
+            <% end %>
         </div>
     </div>
 </div>

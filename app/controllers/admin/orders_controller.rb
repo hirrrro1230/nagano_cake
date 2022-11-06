@@ -4,8 +4,13 @@ class Admin::OrdersController < ApplicationController
         #@customer = Customer.find(params[:id])
     end
     
-    def updated
+    def update
         @order = Order.find(params[:id])
+        if @order.update(order_params)
+            redirect_to admin_path
+        else
+            render :new
+        end
     end    
        
     private
