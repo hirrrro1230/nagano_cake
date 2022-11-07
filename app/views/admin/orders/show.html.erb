@@ -43,20 +43,22 @@
                     <th>小計</th>
                     <th>製作ステータス</th>
                 </thead>
-                <% @orders.each do |order_detail| %>
-                <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
-                <tbody>
-                    <td><%= order_detail.item.name %></td>
-                    <td><%= (order_detail.price * 1.1).floor %></td>
-                    <td><%= order_detail.amount %></td>
-                    <td><%= (order_detail.price * 1.1).floor * order_detail.amount %></td>
-                    <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.keys.map { |k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
-                        <%= f.submit "更新", class:"btn btn-success" %>
-                    </td>
-                </tbody>
-                <% end %>
-                <% end %>
             </table>
+            <% @orders.each do |order_detail| %>
+                <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f| %>
+                <table class="table table-borderless">
+                    <tbody>
+                        <td><%= order_detail.item.name %></td>
+                        <td><%= (order_detail.price * 1.1).floor %></td>
+                        <td><%= order_detail.amount %></td>
+                        <td><%= (order_detail.price * 1.1).floor * order_detail.amount %></td>
+                        <td><%= f.select :making_status, OrderDetail.making_statuses_i18n.keys.map { |k| [I18n.t("enums.order_detail.making_status.#{k}"), k]} %>
+                            <%= f.submit "更新", class:"btn btn-success" %>
+                        </td>
+                    </tbody>
+                </table>
+                <% end %>
+            <% end %>
             <table class="table table-borderless">
                 <tbody>
                     <tr>
