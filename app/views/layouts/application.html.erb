@@ -39,7 +39,7 @@
       <% end %>
       </li>
       <li>
-      <%= link_to destroy_customer_session_path, method: :delete, class:'navbar-brand' do %>
+      <%= link_to destroy_customer_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class:'navbar-brand' do %>
        ログアウト
       <% end %>
       </li>
@@ -65,7 +65,7 @@
        <% end %>
       </li>
       <li>
-        <%= link_to destroy_admin_session_path, method: :delete, class:'navbar-brand' do %>
+        <%= link_to destroy_admin_session_path, method: :delete, "data-confirm" => "本当にログアウトしますか？", class:'navbar-brand' do %>
           ログアウト
         <% end %>
       </li>
