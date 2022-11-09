@@ -1,4 +1,6 @@
 class Public::AddressesController < ApplicationController
+    before_action :ensure_customer, only: [:edit, :update, :destroy]
+    
     def index
         @addresses = Address.all
         @address = Address.new
