@@ -12,14 +12,14 @@ class Public::CustomersController < ApplicationController
     def edit
         @customer = current_customer
         if @customer != current_customer
-            redirect_to customer_path(current_customer)
+            redirect_to customers_my_page_path
         end
     end
     
     def update
         @customer = current_customer
         if @customer.update(customer_params)
-          redirect_to customer_path(@customer.id), notice: "You have updated customer successfully."
+          redirect_to customers_my_page_path, notice: "You have updated customer successfully."
         else
           render :edit
         end
